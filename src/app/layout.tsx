@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "../components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-[var(--foreground)]`}
       >
-        {children}
+        <NavBar />
+        <div className="w-full px-0 pt-24 pb-12 min-h-[80vh]">
+          {children}
+        </div>
+        <footer className="w-full bg-gray-100 border-t border-gray-200 py-6 mt-8">
+          <div className="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} Caramel. All rights reserved. | <a href="#" className="text-blue-600 hover:underline">Privacy Policy</a> | <a href="#" className="text-blue-600 hover:underline">Terms</a>
+          </div>
+        </footer>
       </body>
     </html>
   );
